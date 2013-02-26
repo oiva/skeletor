@@ -1,8 +1,11 @@
 define [
+  "marionette"
   "text!app/module/templates/subView.html"
-], (Template) ->
-  Backbone.View.extend
+], (marionette, Template) ->
+  marionette.ItemView.extend
     template: _.template(Template)
 
-    render: ->
-      @$el.html(@template(name: @options.name))
+    serializeData: ->
+      data = 
+        name: @options.name
+      return data

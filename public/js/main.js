@@ -9,21 +9,38 @@
       jquery: 'ext/jquery-1.9.1.min',
       underscore: 'ext/underscore-min',
       domReady: 'domReady',
-      text: 'text'
+      text: 'text',
+      'marionette': 'ext/plugins/backbone.marionette.min',
+      'backbone.babysitter': 'ext/plugins/backbone.babysitter.min',
+      'backbone.wreqr': 'ext/plugins/backbone.wreqr.min'
     },
     shim: {
-      'backbone': {
+      backbone: {
         deps: ['underscore', 'jquery'],
         exports: 'Backbone'
       },
-      'underscore': {
+      underscore: {
         exports: '_'
+      },
+      marionette: {
+        exports: 'Backbone.Marionette',
+        deps: ['backbone']
       }
     }
   });
 
-  define(['backbone', 'underscore', 'jquery'], function() {
-    return console.log("Init base configs");
+  define(['main-app', 'app/module/controllers/exampleController', 'app/module/router', 'backbone'], function(app, ExampleController, Router) {
+    console.log("Init base configs");
+    window.app = app;
+    window.app.start();
+    new Router({
+      controller: ExampleController
+    });
+    if (Backbone.history != null) {
+      return Backbone.history.start({
+        push_state: true
+      });
+    }
   });
 
 }).call(this);

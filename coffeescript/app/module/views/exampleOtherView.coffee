@@ -1,14 +1,9 @@
 define [
-  "app/module/views/skeletorView"
+  "marionette"
   "text!app/module/templates/exampleOtherTemplate.html"
-], (SkeletorView, Template) ->
-  SkeletorView.extend
+], (marionette, Template) ->
+  marionette.ItemView.extend
     template: _.template(Template)
-    el: "#other-view"
 
     initialize: ->
-      console.log 'init other view'
-
-      # either call 'super' initialize, or provide the same functionality
-      # yourself.
-      SkeletorView.prototype.initialize.call(@)
+      console.log 'init exampleOtherView'

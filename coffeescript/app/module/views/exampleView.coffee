@@ -1,16 +1,9 @@
 define [
-  "app/module/views/skeletorView"
+  "marionette" 
   "text!app/module/templates/exampleTemplate.html"
-  "app/module/models/exampleModel"
-], (SkeletorView, Template, ExampleModel) ->
-  SkeletorView.extend
-    el: "#example-view"
+], (marionette, Template) ->
+  marionette.ItemView.extend
     template: _.template(Template)
 
     initialize: ->
       console.log "init example view"
-      @model = new ExampleModel(name: "Test name")
-      @render()
-
-    render: ->
-      @$el.html(@template(@model.toJSON()))

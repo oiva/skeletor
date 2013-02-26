@@ -1,12 +1,14 @@
-require [
-  'domReady'
-  'app/module/router'
-], (domReady, Router) ->
-  domReady ->
-    console.log "Main app"
-    router = new Router()
+define [
+  'marionette'
+], (marionette, ExampleView, ExampleOtherView, ExampleModel) ->
+  app = new marionette.Application()
 
-    if Backbone.history?
-      Backbone.history.start(push_state: true)
-    @
+  app.addInitializer ->
+    console.log 'app initializer'
 
+    
+
+  app.addRegions
+    content: '#content'
+
+  return app
