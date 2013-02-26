@@ -1,6 +1,6 @@
 define [
   'marionette'
-], (marionette, ExampleView, ExampleOtherView, ExampleModel) ->
+], (marionette) ->
   app = new marionette.Application()
 
   app.addInitializer ->
